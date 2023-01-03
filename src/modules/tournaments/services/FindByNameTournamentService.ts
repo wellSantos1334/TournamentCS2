@@ -1,16 +1,13 @@
-import { ITournament, ITournamentCreate } from '../infra/interfaces/ITournament';
-import Tournament from '../infra/typeorm/entities/Tournament';
+import { ITournament } from '../infra/interfaces/ITournament';
 import { TournamentRepository } from '../infra/typeorm/repositories/TournamentRepository';
 import { ITournamentRepository } from '../interfaces/ITournamentRepository';
 
-// export default class FindByNameTournamentService {
-//    public async execute(): Promise<Tournament[]> {
-//       const tournamentRepository: ITournamentRepository = new TournamentRepository();
+export default class FindByNameTournamentService {
+   public async execute({ name }: ITournament): Promise<ITournament | null> {
+      const tournamentRepository: ITournamentRepository = new TournamentRepository();
 
-//       const findTournament = tournamentRepository.findByName({
-//          name,
-//       });
+      const findTournament = await tournamentRepository.findByName(name);
 
-//       return findTournament;
-//    }
-// }
+      return findTournament;
+   }
+}
