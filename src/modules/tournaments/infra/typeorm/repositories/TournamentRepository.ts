@@ -30,4 +30,15 @@ export class TournamentRepository implements ITournamentRepository {
 
       return findTournament;
    }
+
+   // Find All Tournaments
+   async findAll(): Promise<ITournament[]> {
+      const findAll = this.ormRepository.find({
+         order: {
+            id: 'DESC',
+         },
+      });
+
+      return findAll;
+   }
 }

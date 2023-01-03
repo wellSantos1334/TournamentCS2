@@ -1,5 +1,6 @@
 import { Request, Response } from 'express';
 import CreateTournamentService from '../services/CreateTournamentService';
+import FindAllTournamentService from '../services/FindAllTournamentService';
 import * as yup from 'yup';
 
 import { validation } from '../../../shared/middlewares/Validation';
@@ -16,6 +17,14 @@ export default class TournamentController {
       });
 
       return res.json({ msg: 'Tournament created successfull.', newTournament });
+   }
+
+   public async findAllTournament(req: Request, res: Response): Promise<Response> {
+      const FindAllTournament = new FindAllTournamentService();
+
+      const findAll = await FindAllTournament.execute();
+
+      return res.json(findAll);
    }
 
    public Validation = validation(getSchema => ({
