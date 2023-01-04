@@ -61,4 +61,10 @@ export class TournamentRepository implements ITournamentRepository {
 
       return data;
    }
+
+   async delete(id: number): Promise<ITournament | unknown> {
+      const data = this.ormRepository.delete({ id });
+
+      return data;
+   }
 }

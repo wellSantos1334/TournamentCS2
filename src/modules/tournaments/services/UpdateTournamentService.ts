@@ -20,8 +20,6 @@ export default class UpdateTournamentService {
 
       await tournamentRepository.update(dataTournament.id, dataTournament.name);
 
-      console.log(dataTournament);
-
       return dataTournament;
    }
 }

@@ -9,5 +9,6 @@ tournamentRouter.post('/', tournamentController.tournamentValidation, tournament
 tournamentRouter.get('/', tournamentController.findAllTournament);
 tournamentRouter.get('/select', tournamentController.findByName);
 tournamentRouter.put('/:id', tournamentController.tournamentValidation, tournamentController.tournamentValidation);
+tournamentRouter.delete('/:id', tournamentController.delete);
 
 export default tournamentRouter;

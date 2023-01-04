@@ -4,9 +4,10 @@ import FindAllTournamentService from '../services/FindAllTournamentService';
 import * as yup from 'yup';
 
 import { validation } from '../../../shared/middlewares/Validation';
-import { ITournament, ITournamentCreate } from '../infra/interfaces/ITournament';
+import { ITournament, ITournamentCreate, ITournamentOmitName } from '../infra/interfaces/ITournament';
 import FindByNameTournamentService from '../services/FindByNameTournamentService';
 import UpdateTournamentService from '../services/UpdateTournamentService';
+import DeleteTournamentService from '../services/DeleteTournamentService';
 
 export default class TournamentController {
    public async create(req: Request, res: Response): Promise<Response> {
@@ -49,9 +50,19 @@ export default class TournamentController {
          name,
       });
 
-      console.log(id);
+      return res.status(200).json(dataTournament);
+   }
 
-      return res.json(dataTournament);
+   public async delete(req: Request<ITournamentOmitName>, res: Response): Promise<Response> {
+      const { id } = req.params;
+
+      const deleteTournament = new DeleteTournamentService();
+
+      const dataTournament = await deleteTournament.execute({
+         id,
+      });
+
+      return res.status(200).json({ msg: 'Tournament deleted sucessfull', dataTournament });
    }
 
    public tournamentValidation = validation(getSchema => ({
