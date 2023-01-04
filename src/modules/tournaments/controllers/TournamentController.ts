@@ -54,7 +54,7 @@ export default class TournamentController {
       return res.json(dataTournament);
    }
 
-   public Validation = validation(getSchema => ({
+   public tournamentValidation = validation(getSchema => ({
       body: getSchema<ITournamentCreate>(
          yup.object().shape({
             name: yup.string().required().min(3),

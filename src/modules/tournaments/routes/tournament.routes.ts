@@ -5,9 +5,9 @@ const tournamentRouter = Router();
 
 const tournamentController = new TournamentController();
 
-tournamentRouter.post('/', tournamentController.Validation, tournamentController.create);
+tournamentRouter.post('/', tournamentController.tournamentValidation, tournamentController.create);
 tournamentRouter.get('/', tournamentController.findAllTournament);
 tournamentRouter.get('/select', tournamentController.findByName);
-tournamentRouter.put('/:id', tournamentController.update);
+tournamentRouter.put('/:id', tournamentController.tournamentValidation, tournamentController.tournamentValidation);
 
 export default tournamentRouter;
