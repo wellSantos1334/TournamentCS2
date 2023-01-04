@@ -31,6 +31,17 @@ export class TournamentRepository implements ITournamentRepository {
       return findTournament;
    }
 
+   // Edit Tournament By Id
+   async findById(id: number): Promise<ITournament | null> {
+      const findTournament = this.ormRepository.findOne({
+         where: {
+            id,
+         },
+      });
+
+      return findTournament;
+   }
+
    // Find All Tournaments
    async findAll(): Promise<ITournament[]> {
       const findAll = this.ormRepository.find({
@@ -40,5 +51,14 @@ export class TournamentRepository implements ITournamentRepository {
       });
 
       return findAll;
+   }
+
+   async update(id: number, name: string): Promise<ITournament> {
+      const data = this.ormRepository.save({
+         id,
+         name,
+      });
+
+      return data;
    }
 }

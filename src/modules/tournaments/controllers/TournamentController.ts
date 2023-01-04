@@ -4,8 +4,9 @@ import FindAllTournamentService from '../services/FindAllTournamentService';
 import * as yup from 'yup';
 
 import { validation } from '../../../shared/middlewares/Validation';
-import { ITournamentCreate } from '../infra/interfaces/ITournament';
+import { ITournament, ITournamentCreate } from '../infra/interfaces/ITournament';
 import FindByNameTournamentService from '../services/FindByNameTournamentService';
+import UpdateTournamentService from '../services/UpdateTournamentService';
 
 export default class TournamentController {
    public async create(req: Request, res: Response): Promise<Response> {
@@ -35,6 +36,22 @@ export default class TournamentController {
       const findByName = await findTournamentService.execute({ name });
 
       return res.json(findByName);
+   }
+
+   public async update(req: Request<ITournament>, res: Response): Promise<Response> {
+      const { id } = req.params;
+      const { name } = req.body;
+
+      const updateTournament = new UpdateTournamentService();
+
+      const dataTournament = await updateTournament.execute({
+         id,
+         name,
+      });
+
+      console.log(id);
+
+      return res.json(dataTournament);
    }
 
    public Validation = validation(getSchema => ({
