@@ -4,6 +4,7 @@ import { validation } from '@shared/middlewares/Validation';
 import { Request, Response } from 'express';
 import * as yup from 'yup';
 import FindAllTeamService from '../service/FindAllTeamService';
+import FindByNameService from '../service/FindByNameService';
 import UpdateTeamService from '../service/UpdateTeamService';
 
 export default class TeamController {
@@ -38,6 +39,15 @@ export default class TeamController {
       });
 
       return res.status(200).json({ msg: 'Team updated', updatedTeam });
+   }
+
+   public async findByName(req: Request, res: Response): Promise<Response> {
+      const { name } = req.body;
+      const findName = new FindByNameService();
+
+      const findByName = await findName.execute(name);
+
+      return res.status(200).json(findByName);
    }
 
    public Validation = validation(getSchema => ({
