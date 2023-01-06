@@ -3,6 +3,7 @@ import CreateTeamService from '@modules/teams/service/CreateTeamService';
 import { validation } from '@shared/middlewares/Validation';
 import { Request, Response } from 'express';
 import * as yup from 'yup';
+import DeleteTeamService from '../service/DeleteTeamService';
 import FindAllTeamService from '../service/FindAllTeamService';
 import FindByNameService from '../service/FindByNameService';
 import UpdateTeamService from '../service/UpdateTeamService';
@@ -48,6 +49,16 @@ export default class TeamController {
       const findByName = await findName.execute(name);
 
       return res.status(200).json(findByName);
+   }
+
+   public async delete(req: Request<ITeam>, res: Response): Promise<Response> {
+      const { id } = req.params;
+
+      const deleteTeam = new DeleteTeamService();
+
+      const deletedTeam = await deleteTeam.execute(id);
+
+      return res.status(200).json({ msg: 'Team deleted sucessfull.', deletedTeam });
    }
 
    public Validation = validation(getSchema => ({

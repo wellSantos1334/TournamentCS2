@@ -9,5 +9,6 @@ teamRouter.post('/', teamController.Validation, teamController.create);
 teamRouter.get('/', teamController.findAll);
 teamRouter.put('/:id', teamController.Validation, teamController.update);
 teamRouter.get('/select', teamController.findByName);
+teamRouter.delete('/:id', teamController.delete);
 
 export default teamRouter;

@@ -56,4 +56,10 @@ export class TeamRepository implements ITeamRepository {
 
       return data;
    }
+
+   async delete(id: number): Promise<unknown> {
+      const data = this.ormRepository.delete(id);
+
+      return data;
+   }
 }
