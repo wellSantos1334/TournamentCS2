@@ -27,4 +27,14 @@ export class TeamRepository implements ITeamRepository {
 
       return findTeam;
    }
+
+   async findAll(): Promise<ITeam[]> {
+      const findAllTeams = this.ormRepository.find({
+         order: {
+            id: 'DESC',
+         },
+      });
+
+      return findAllTeams;
+   }
 }

@@ -5,3 +5,4 @@ export interface ITournament {
 
 export type ITournamentCreate = Omit<ITournament, 'id'>;
 export type ITournamentOmitName = Omit<ITournament, 'name'>;
+export type ITournamentOmitId = Omit<ITournament, 'id'>;

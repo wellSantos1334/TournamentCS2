@@ -3,6 +3,7 @@ import cors from 'cors';
 import express, { NextFunction, Request, Response } from 'express';
 import 'express-async-errors';
 import routes from './routes';
+import 'express-async-errors';
 import AppError from '@shared/errors/AppError';
 import '../../TranslationsYup';
 const app = express();
