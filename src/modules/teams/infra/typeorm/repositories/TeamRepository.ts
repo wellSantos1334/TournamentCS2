@@ -28,6 +28,16 @@ export class TeamRepository implements ITeamRepository {
       return findTeam;
    }
 
+   async findById(id: number): Promise<ITeam | null> {
+      const data = this.ormRepository.findOne({
+         where: {
+            id,
+         },
+      });
+
+      return data;
+   }
+
    async findAll(): Promise<ITeam[]> {
       const findAllTeams = this.ormRepository.find({
          order: {
@@ -36,5 +46,14 @@ export class TeamRepository implements ITeamRepository {
       });
 
       return findAllTeams;
+   }
+
+   async update({ id, name }: ITeam): Promise<ITeam> {
+      const data = this.ormRepository.save({
+         id,
+         name,
+      });
+
+      return data;
    }
 }

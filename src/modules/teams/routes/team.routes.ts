@@ -7,5 +7,6 @@ const teamController = new TeamController();
 
 teamRouter.post('/', teamController.Validation, teamController.create);
 teamRouter.get('/', teamController.findAll);
+teamRouter.put('/:id', teamController.Validation, teamController.update);
 
 export default teamRouter;
