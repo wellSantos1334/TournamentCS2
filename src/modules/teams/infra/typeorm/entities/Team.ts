@@ -1,4 +1,13 @@
-import { Column, CreateDateColumn, Entity, PrimaryGeneratedColumn, UpdateDateColumn } from 'typeorm';
+// import Tournament from '../../../../tournaments/infra/typeorm/entities/Tournament';
+import {
+   Column,
+   CreateDateColumn,
+   Entity,
+   JoinTable,
+   ManyToMany,
+   PrimaryGeneratedColumn,
+   UpdateDateColumn,
+} from 'typeorm';
 
 @Entity('teams')
 class Team {

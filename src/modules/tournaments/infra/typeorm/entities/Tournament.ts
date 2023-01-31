@@ -1,10 +1,5 @@
-import {
-   Column,
-   CreateDateColumn,
-   Entity,
-   PrimaryGeneratedColumn,
-   UpdateDateColumn,
-} from 'typeorm';
+import Team from '../../../../teams/infra/typeorm/entities/Team';
+import { Column, CreateDateColumn, Entity, PrimaryGeneratedColumn, UpdateDateColumn } from 'typeorm';
 
 @Entity('tournaments')
 class Tournament {

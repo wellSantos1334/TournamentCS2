@@ -1,5 +1,5 @@
 import AppError from '@shared/errors/AppError';
-import { ITournament, ITournamentCreate } from '../infra/interfaces/ITournament';
+import { ITournamentCreate } from '../infra/interfaces/ITournament';
 import { TournamentRepository } from '../infra/typeorm/repositories/TournamentRepository';
 import { ITournamentRepository } from '../interfaces/ITournamentRepository';
 

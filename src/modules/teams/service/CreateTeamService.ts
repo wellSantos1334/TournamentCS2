@@ -12,7 +12,7 @@ export default class CreateTeamService {
          throw new AppError('Team already exists');
       }
 
-      const createTeam = teamRepository.create({
+      const createTeam = await teamRepository.create({
          name,
       });
 
